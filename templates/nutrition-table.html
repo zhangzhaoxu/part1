@@ -1,0 +1,39 @@
+<md-data-table-toolbar ng-show="!selected.length">
+  <h2 class="md-title">学生管理</h2>
+</md-data-table-toolbar>
+
+<md-data-table-toolbar class="alternate" ng-show="selected.length" layout="row" layout-align="space-between">
+  <div>{{selected.length}} {{selected.length > 1 ? 'students' : 'student'}} selected</div>
+  <md-button class="md-fab md-primary md-mini" ng-click="showConfirm($event,selected)">
+    <md-icon md-svg-src="icon/ic_delete_black_24px.svg"></md-icon>
+  </md-button>
+</md-data-table-toolbar>
+
+<md-data-table-container>
+  <table md-data-table md-row-select="selected" md-progress="deferred">
+    <thead md-order="query.order" md-trigger="onorderchange">
+      <tr>
+        <th ng-repeat="column in columns" ng-attr-order-by="{{column.orderBy}}" ng-attr-numeric="{{column.numeric}}" ng-attr-unit="{{column.unit}}" name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-trim="{{column.trim}}"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr md-auto-select  data-ng-repeat="dessert in desserts.data | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+        <td><input type="text" ng-model="dessert.name" ng-readonly="dessert.ReadOrWrite"  ng-click="prevent($event)"></td>
+        <td><input type="text" ng-model="dessert.No" ng-readonly="dessert.ReadOrWrite" ng-click="prevent($event)"></td>
+        <td><input type="text" ng-model="dessert.ClassNumber" ng-readonly="dessert.ReadOrWrite" ng-click="prevent($event)"></td>
+        <td><input type="text" ng-model="dessert.sex" ng-readonly="dessert.ReadOrWrite" ng-click="prevent($event)"></td>
+        <td><input type="text" ng-model="dessert.Phone" ng-readonly="dessert.ReadOrWrite" ng-click="prevent($event)"></td>
+        <td>
+          <div ng-show="showEdit" style="cursor: pointer" ng-click="Edit(dessert)" ng-click="prevent($event)">编辑</div>
+          <div ng-show="!showEdit" style="cursor: pointer" ng-click="Save(dessert)" ng-click="prevent($event)">编辑</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-data-table-container>
+
+<md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{desserts.count}}" md-trigger="onpagechange"></md-data-table-pagination>
+
+<!--<md-data-table-toolbar >-->
+  <!--<md-button ng-click="loadStuff()">Trigger Outside Event</md-button>-->
+<!--</md-data-table-toolbar>-->
