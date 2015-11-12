@@ -25,3 +25,7 @@ td input{
   background-color: transparent;
   outline: none;
 }
+
+*{
+    outline: none;
+}

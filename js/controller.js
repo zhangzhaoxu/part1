@@ -31,7 +31,7 @@ angular.module('App').controller('nutritionController', ['$http', '$q', '$timeou
         console.log(dessert);
         var index = $scope.desserts.data.indexOf(dessert);
         $scope.desserts.data[index].ReadOrWrite = !$scope.desserts.data[index].ReadOrWrite;
-        $scope.showEdit = !$scope.showEdit;
+        $scope.desserts.data[index].showEdit = !$scope.desserts.data[index].showEdit;
         console.log($scope.showEdit);
     };
 
@@ -40,7 +40,7 @@ angular.module('App').controller('nutritionController', ['$http', '$q', '$timeou
         //此处添加向后台修改的申请，成功推出编辑模式，失败提示
         var index = $scope.desserts.data.indexOf(dessert);
         $scope.desserts.data[index].ReadOrWrite = !$scope.desserts.data[index].ReadOrWrite;
-        $scope.showEdit = !$scope.showEdit;
+        $scope.desserts.data[index].showEdit = !$scope.desserts.data[index].showEdit;
     }
 
     $scope.prevent = function (event) {
@@ -56,12 +56,15 @@ angular.module('App').controller('nutritionController', ['$http', '$q', '$timeou
     $scope.columns = [{
         name: '姓名',
         orderBy:'name'
+    },{
+        name: '学号',
+        orderBy:'No'
+    },{
+        name: '班级号',
+        orderBy:'ClassName'
     }, {
         name: '性别',
         orderBy:'sex'
-    }, {
-        name: '学号',
-        orderBy:'No'
     },  {
         name: '联系方式',
         orderBy:'Phone'
