@@ -480,3 +480,8 @@ table[md-data-table] > tbody > tr > td > md-checkbox,
 table[md-data-table] > tfoot > tr > td > md-checkbox {
   margin: 0;
 }
+
+
+.myShow{
+    display: none;
+}

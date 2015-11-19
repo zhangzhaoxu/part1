@@ -118,6 +118,9 @@ function mdDataTable($mdTable) {
     head.attr('md-table-head', '');
     rows.attr('md-table-row', '');
     rows.find('td').attr('md-table-cell', '');
+
+      //console.log(rows.find('td'));
+
     
     if(foot.length) {
       foot.attr('md-table-foot', '');
@@ -764,6 +767,7 @@ function mdSelectRow($mdTable) {
     }
     
     tElement.prepend(angular.element('<td></td>').append(checkbox));
+
     
     if(angular.isDefined(tAttrs.mdAutoSelect)) {
       tAttrs.$set('ngClick', 'toggleRow(' + ngRepeat.item + ', $event)');
